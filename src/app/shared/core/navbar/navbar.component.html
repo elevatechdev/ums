@@ -1,0 +1,25 @@
+<aside class="w-64 bg-blue-600 text-white p-4 flex-shrink-0 flex flex-col justify-between">
+    <div>
+      <h2 class="text-xl font-bold mb-4">User Management</h2>
+      <ul>
+        <li class="py-2 px-4 hover:bg-blue-700 cursor-pointer block"  
+            [routerLink]="['/dashboard']" 
+            routerLinkActive="bg-blue-800">
+          Dashboard
+        </li>
+        <li class="py-2 px-4 hover:bg-blue-700 cursor-pointer block"  
+            [routerLink]="['/users']" 
+            routerLinkActive="bg-blue-800">
+          Users
+        </li>
+      </ul>
+    </div>
+  
+    <div class="mb-4">
+      <ul>
+        <li class="py-2 px-4 hover:bg-blue-700 cursor-pointer block">Settings</li>
+        <li class="py-2 px-4 hover:bg-red-700 cursor-pointer block">Logout</li>
+      </ul>
+    </div>
+  </aside>
+  
