@@ -1,0 +1,30 @@
+<div class="container mx-auto px-4 py-8">
+  <div class="bg-white shadow-lg rounded-lg p-6">
+    <h2 class="text-2xl font-bold mb-4">Project Analytics</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Total Projects Card -->
+      <div class="bg-blue-100 p-6 rounded-lg shadow-md text-center">
+        <h3 class="text-xl font-semibold text-blue-600">Total Projects</h3>
+        <p class="text-3xl font-bold">{{ projectAnalytics.totalProjects }}</p>
+      </div>
+
+      <!-- Active Projects Card -->
+      <div class="bg-green-100 p-6 rounded-lg shadow-md text-center">
+        <h3 class="text-xl font-semibold text-green-600">Active Projects</h3>
+        <p class="text-3xl font-bold">{{ projectAnalytics.activeProjects }}</p>
+      </div>
+
+      <!-- Completed Projects Card -->
+      <div class="bg-purple-100 p-6 rounded-lg shadow-md text-center">
+        <h3 class="text-xl font-semibold text-purple-600">Completed Projects</h3>
+        <p class="text-3xl font-bold">{{ projectAnalytics.completedProjects }}</p>
+      </div>
+
+      <!-- Pending Projects Card -->
+      <div class="bg-yellow-100 p-6 rounded-lg shadow-md text-center">
+        <h3 class="text-xl font-semibold text-yellow-600">Pending Projects</h3>
+        <p class="text-3xl font-bold">{{ projectAnalytics.pendingProjects }}</p>
+      </div>
+    </div>
+  </div>
+</div>
