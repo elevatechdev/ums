@@ -1,20 +1,20 @@
 import { Component } from '@angular/core';
-import { Auth, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from '@angular/fire/auth';
-
+import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
-import { FormsModule} from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
   imports: [FormsModule],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.scss'
+  styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
   email = '';
   password = '';
+  loading = false;
 
-  constructor(private auth: Auth, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   login() {
     if (!this.email || !this.password) {
@@ -22,37 +22,28 @@ export class LoginComponent {
       return;
     }
 
-    const email = this.email.trim();
-    const password = this.password.trim();
-
-    signInWithEmailAndPassword(this.auth, email, password)
+    this.loading = true;
+    this.authService.loginWithCredentials(this.email, this.password)
       .then(() => {
-        console.log("Login successful!");
+        this.loading = false; 
         this.router.navigate(['/users']);
       })
-      .catch(error => {
-        console.error("Login error:", error);
-
-        let errorMessage = "Login failed. Please try again.";
-
-        if (error.code === 'auth/invalid-credential') {
-          errorMessage = "Invalid email or password. Please check your credentials.";
-        } else if (error.code === 'auth/user-not-found') {
-          errorMessage = "No account found with this email.";
-        } else if (error.code === 'auth/wrong-password') {
-          errorMessage = "Incorrect password. Try again.";
-        }
-
+      .catch(errorMessage => {
+        this.loading = false;
         window.alert(errorMessage);
       });
   }
 
-
-
+  // Method to handle Google login
   loginWithGoogle() {
-    const provider = new GoogleAuthProvider();
-    signInWithPopup(this.auth, provider)
-      .then(() => this.router.navigate(['/users']))
-      .catch(error => console.error('Google Sign-in error:', error));
+    this.loading = true;
+    this.authService.googleSignIn()
+      .then(() => {
+        this.loading = false;
+      })
+      .catch(errorMessage => {
+        this.loading = false;
+        window.alert(errorMessage);
+      });
   }
 }

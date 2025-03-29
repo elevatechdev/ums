@@ -29,18 +29,15 @@ export class ProjectsComponent implements OnInit, OnDestroy {
     this.fetchProjects();
   }
 
+
   ngOnDestroy() {
-    if (this.projectSubscription) {
-      this.projectSubscription.unsubscribe();
-    }
+    this.projectSubscription?.unsubscribe();
   }
 
-  // Fetch Projects from Firestore
-  fetchProjects() {
-    const projectsRef = collection(this.firestore, 'projects');
-    this.projects$ = collectionData(projectsRef, { idField: 'id' });
 
-    this.projectSubscription = this.projects$.subscribe((projects) => {
+  // Fetch projects from service
+  fetchProjects() {
+    this.projectSubscription = this.projectService.getProjects().subscribe((projects) => {
       this.projects = projects;
     });
   }
