@@ -1,0 +1,58 @@
+<div class="flex min-h-screen">
+
+
+<div class=" relative flex flex-col items-center justify-center p-12 text-center text-white bg-cover bg-center w-11/12"
+     style="background-image: url('assets/images/authentication-darkmode.png');">
+
+  <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+
+  <div class="relative z-10 max-w-md">
+    <!-- Title -->
+    <h2 class="text-5xl font-extrabold mb-6 text-white drop-shadow-lg">
+      User Management System
+    </h2>
+
+    <p class="text-lg text-purple-200 leading-relaxed mb-6 text-start">
+      A secure and scalable system to manage users, authenticate access,
+      and control roles efficiently. Designed for businesses and teams
+      that value simplicity and security.
+    </p>
+
+  </div>
+</div>
+
+
+
+
+
+  <div class="w-1/2 flex flex-col justify-center items-center p-12 ">
+    <h2 class="text-3xl font-bold mb-6">Welcome back</h2>
+    <p class="text-gray-600 mb-6">Please enter your details</p>
+
+    <input type="email" [(ngModel)]="email" placeholder="Email address"
+      class="border p-3 w-full rounded-lg mb-4" />
+
+    <input type="password" [(ngModel)]="password" placeholder="Password"
+      class="border p-3 w-full rounded-lg mb-4" />
+
+    <div class="flex justify-between w-full text-sm text-gray-500 mb-4">
+      <label>
+      </label>
+      <a href="https://myaccount.google.com/intro/signinoptions/password" class="text-purple-600">Forgot password?</a>
+    </div>
+
+    <button (click)="login()" class="bg-purple-600 text-white p-3 w-60 rounded-lg">Sign in</button>
+
+    <div class="mt-4">
+      <button (click)="loginWithGoogle()" class="border flex items-center justify-center p-3 w-full rounded-lg">
+        <img src="https://www.svgrepo.com/show/355037/google.svg" class="w-5 h-5 mr-2" alt="Google"> Sign in with Google
+      </button>
+    </div>
+
+    <p class="text-sm text-gray-500 mt-4 cursor-pointer">
+      Don't have an account? <a (click)="loginWithGoogle()"class="text-purple-600 ">Sign up</a>
+    </p>
+  </div>
+
+
+</div>
